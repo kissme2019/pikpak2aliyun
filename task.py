@@ -37,7 +37,6 @@ if args.act=="download":
     })
     tasks_req = requests.post(QUERY_URL,headers=deta_headers,data=payload,verify=False)
     tasks=json.loads(tasks_req.text)
-    print(tasks)
     if len(tasks['items']) < 1:
         quit()
     task=tasks['items'][0]
