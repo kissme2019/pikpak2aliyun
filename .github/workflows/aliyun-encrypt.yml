@@ -45,7 +45,7 @@ jobs:
           pip install install requests
       - name: 下载加密程序
         run: |
-          curl -L -o dist.tar.gz https://github.com/kissme2019/alist-encrypt/releases/download/0.0.2/dist.tar.gz
+          curl -L -o dist.tar.gz https://github.com/ykxVK8yL5L/alist-encrypt/releases/download/0.0.1/dist.tar.gz
           tar -xzf dist.tar.gz
           
           
@@ -65,7 +65,7 @@ jobs:
         id: encrypt
         if: steps.downloading.outputs.filename != '' && !cancelled() && !failure()
         run: |
-           ${{ github.workspace }}/build/nodejs-linux '${{ secrets.ALIST_ENCRYPT_PASSWORD }}' aesctr enc '${{ github.workspace }}/downloads/' '${{ github.workspace }}/out/' encName
+           ${{ github.workspace }}/dist/nodejs-linux '${{ secrets.ALIST_ENCRYPT_PASSWORD }}' aesctr enc '${{ github.workspace }}/downloads/' '${{ github.workspace }}/out/' encName
            filename=$(ls out | head -n1)
            #extension=$(awk 'BEGIN{srand();}{a[NR]=$0}END{print a[int(rand()*NR)+1]}' suffixes | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
            extension=${filename##*.}
