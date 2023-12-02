@@ -71,7 +71,7 @@ jobs:
            filename_no_suffix="${filename%.*}"
            newfilename="$filename_no_suffix"."$extension"
            #if [ "$filename" != "$newfilename" ]; then
-           mv out/$filename out/$newfilename
+           #mv out/$filename out/$newfilename
            #fi
            sha1_s=`openssl sha1 out/$newfilename | awk '{ print $2 }'`
            header="OC-Checksum:sha1:$sha1_s"
